@@ -36,6 +36,8 @@ dependencies {
   implementation(AndroidX.appCompat)
   implementation(AndroidX.constraintLayout)
   implementation(AndroidX.recyclerView)
+  implementation(AndroidX.lifecycleExtensions)
+  implementation(AndroidX.lifecycleViewModelKtx)
   implementation(material)
   implementation(AndroidX.swipeToRefreshLayout)
   implementation(timber)
