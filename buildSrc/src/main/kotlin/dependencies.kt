@@ -6,6 +6,7 @@ object Versions {
   const val coroutines = "1.3.5"
   const val kotlin = "1.3.72"
   const val ktor = "1.3.2"
+  const val lifecycle = "2.2.0"
   const val material = "1.2.0-alpha05"
   const val minSdk = 23
   const val picasso = "2.71828"
@@ -23,6 +24,8 @@ const val material = "com.google.android.material:material:${Versions.material}"
 object AndroidX {
   const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
   const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+  const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+  const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
   const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
   const val swipeToRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeToRefreshLayout}"
 }

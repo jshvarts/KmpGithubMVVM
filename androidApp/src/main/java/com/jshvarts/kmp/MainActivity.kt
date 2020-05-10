@@ -3,25 +3,22 @@ package com.jshvarts.kmp
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jshvarts.kmp.R.layout
 import com.jshvarts.kmp.R.string
 import com.jshvarts.kmp.shared.api.UpdateDataException
 import com.jshvarts.kmp.shared.createPlatformMessage
 import com.jshvarts.kmp.shared.model.Member
-import com.jshvarts.kmp.shared.presentation.MembersPresenter
-import com.jshvarts.kmp.shared.presentation.MembersView
-import kotlinx.android.synthetic.main.activity_main.membersRecyclerView
-import kotlinx.android.synthetic.main.activity_main.platformMessage
-import kotlinx.android.synthetic.main.activity_main.pullToRefresh
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), MembersView {
+class MainActivity : AppCompatActivity() {
   private val repository by lazy {
     (application as KmpGithubMVVMApplication).membersRepository
   }
 
-  private val presenter by lazy {
-    MembersPresenter(this, repository)
+  private val viewModel by lazy {
+    MembersViewModel(repository)
   }
 
   private lateinit var adapter: MemberAdapter
@@ -34,27 +31,24 @@ class MainActivity : AppCompatActivity(), MembersView {
 
     setupRecyclerView()
 
-    presenter.loadMembers()
+    viewModel.members.observe(this, Observer {
+      showData(it)
+    })
+
+    viewModel.error.observe(this, Observer {
+      showError(it)
+    })
+
+    viewModel.isRefreshing.observe(this, Observer {
+      pullToRefresh.isRefreshing = it
+    })
 
     pullToRefresh.setOnRefreshListener {
-      presenter.loadMembers()
+      viewModel.loadMembers()
     }
   }
 
-  override fun onDestroy() {
-    presenter.stop()
-    super.onDestroy()
-  }
-
-  override fun showRefreshing() {
-    pullToRefresh.isRefreshing = true
-  }
-
-  override fun hideRefreshing() {
-    pullToRefresh.isRefreshing = false
-  }
-
-  override fun showData(members: List<Member>) {
+  private fun showData(members: List<Member>) {
     adapter.members = members
 
     runOnUiThread {
@@ -62,7 +56,7 @@ class MainActivity : AppCompatActivity(), MembersView {
     }
   }
 
-  override fun showError(error: Throwable) {
+  private fun showError(error: Throwable) {
     val errorMessage = when (error) {
       is UpdateDataException -> getString(string.update_problem_message)
       else -> getString(string.unknown_error)
