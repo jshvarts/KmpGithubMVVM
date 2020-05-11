@@ -3,6 +3,7 @@ plugins {
   id("kotlinx-serialization")
   id("com.android.library")
   id("org.jetbrains.kotlin.native.cocoapods")
+  id("com.squareup.sqldelight")
 }
 
 android {
@@ -49,6 +50,7 @@ kotlin {
         implementation(Ktor.Json.common)
         implementation(Ktor.Logging.common)
         implementation(Ktor.Serialization.common)
+        implementation(SqlDelight.common)
       }
     }
 
@@ -63,6 +65,7 @@ kotlin {
         implementation(Ktor.Logging.slf4j)
         implementation(Ktor.Serialization.jvm)
         implementation(Serialization.runtime)
+        implementation(SqlDelight.android)
       }
     }
 
@@ -75,7 +78,15 @@ kotlin {
         implementation(Ktor.Logging.native)
         implementation(Ktor.Serialization.native)
         implementation(Serialization.runtimeNative)
+        implementation(SqlDelight.native)
       }
     }
+  }
+}
+
+sqldelight {
+  database("KmpGithubDatabase") {
+    packageName = "com.jshvarts.kmp.db"
+    sourceFolders = listOf("sqldelight")
   }
 }

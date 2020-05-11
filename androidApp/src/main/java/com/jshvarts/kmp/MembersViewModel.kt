@@ -29,10 +29,10 @@ class MembersViewModel(
     loadMembers()
   }
 
-  fun loadMembers() {
+  fun loadMembers(force: Boolean = false) {
 
     viewModelScope.launch {
-      repository.fetchMembersAsFlow()
+      repository.fetchMembersAsFlow(force)
         .onStart {
           _isRefreshing.value = true
         }.onCompletion {
