@@ -1,0 +1,6 @@
+module Pods_KmpGithubMVVM {
+  umbrella header "Pods-KmpGithubMVVM-umbrella.h"
+
+  export *
+  module * { export * }
+}

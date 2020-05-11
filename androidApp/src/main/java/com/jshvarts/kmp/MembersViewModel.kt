@@ -6,6 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jshvarts.kmp.shared.model.Member
 import com.jshvarts.kmp.shared.model.MembersRepository
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class MembersViewModel(
@@ -26,16 +30,18 @@ class MembersViewModel(
   }
 
   fun loadMembers() {
-    _isRefreshing.value = true
 
     viewModelScope.launch {
-      _isRefreshing.value = try {
-        _members.value = repository.getMembers()
-        false
-      } catch (error: Throwable) {
-        _error.value = error
-        false
-      }
+      repository.fetchMembersAsFlow()
+        .onStart {
+          _isRefreshing.value = true
+        }.onCompletion {
+          _isRefreshing.value = false
+        }.catch {
+          _error.value = it
+        }.collect {
+          _members.value = it
+        }
     }
   }
 }

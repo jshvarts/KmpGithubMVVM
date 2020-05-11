@@ -17,6 +17,9 @@ android {
   }
 }
 
+// CocoaPods requires the podspec to have a version.
+version = "1.0"
+
 kotlin {
   targets {
     val sdkName: String? = System.getenv("SDK_NAME")
