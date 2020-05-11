@@ -12,6 +12,7 @@ object Versions {
   const val picasso = "2.71828"
   const val recyclerView = "1.1.0"
   const val serialization = "0.20.0"
+  const val slf4j = "1.7.30"
   const val swipeToRefreshLayout = "1.0.0"
   const val targetSdk = 29
   const val timber = "4.7.1"
@@ -59,6 +60,7 @@ object Ktor {
   object Logging {
     const val common = "io.ktor:ktor-client-logging:${Versions.ktor}"
     const val jvm = "io.ktor:ktor-client-logging-jvm:${Versions.ktor}"
+    const val slf4j = "org.slf4j:slf4j-simple:${Versions.slf4j}"
     const val native = "io.ktor:ktor-client-logging-native:${Versions.ktor}"
   }
 

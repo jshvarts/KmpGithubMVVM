@@ -60,6 +60,7 @@ kotlin {
         implementation(Ktor.Core.jvm)
         implementation(Ktor.Json.jvm)
         implementation(Ktor.Logging.jvm)
+        implementation(Ktor.Logging.slf4j)
         implementation(Ktor.Serialization.jvm)
         implementation(Serialization.runtime)
       }
