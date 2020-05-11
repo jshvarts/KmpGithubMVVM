@@ -14,7 +14,7 @@ import kotlinx.serialization.json.JsonConfiguration
 
 class GithubApi {
 
-  private val memberUrl = "https://api.github.com/orgs/squarespace/members"
+  private val memberUrl = "https://api.github.com/orgs/jetbrains/members"
 
   private val client by lazy {
     HttpClient() {

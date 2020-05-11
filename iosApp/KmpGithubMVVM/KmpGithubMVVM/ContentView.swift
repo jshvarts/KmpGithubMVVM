@@ -15,13 +15,16 @@ struct ContentView: View {
   
   var body: some View {
       NavigationView {
+        VStack {
           List(membersViewModel.members, id: \.id) { member in
             MemberView(member: member)
           }
-          .navigationBarTitle(Text("Github Members"), displayMode: .large)
-          .onAppear(perform: {
-              self.membersViewModel.fetch()
-          })
+          Text(CommonKt.createPlatformMessage())
+        }
+        .navigationBarTitle(Text("Github Members"), displayMode: .large)
+        .onAppear(perform: {
+            self.membersViewModel.fetch()
+        })
       }
   }
 }
