@@ -13,6 +13,7 @@ object Versions {
   const val recyclerView = "1.1.0"
   const val serialization = "0.20.0"
   const val slf4j = "1.7.30"
+  const val sqldelight = "1.3.0"
   const val swipeToRefreshLayout = "1.0.0"
   const val targetSdk = 29
   const val timber = "4.7.1"
@@ -73,8 +74,14 @@ object Ktor {
 
 object Serialization {
   const val runtime =
-    "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${Versions.serialization}"
+      "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${Versions.serialization}"
   const val runtimeNative =
-    "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${Versions.serialization}"
+      "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${Versions.serialization}"
+}
+
+object SqlDelight {
+  const val common = "com.squareup.sqldelight:runtime:${Versions.sqldelight}"
+  const val android = "com.squareup.sqldelight:android-driver:${Versions.sqldelight}"
+  const val native = "com.squareup.sqldelight:native-driver:${Versions.sqldelight}"
 }
 

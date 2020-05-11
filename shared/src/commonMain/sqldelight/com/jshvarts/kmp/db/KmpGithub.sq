@@ -1,0 +1,15 @@
+CREATE TABLE member (
+  key INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  id INTEGER NOT NULL,
+  login TEXT NOT NULL,
+  avatarUrl TEXT NOT NULL
+);
+
+insertItem:
+INSERT OR REPLACE INTO member (id, login, avatarUrl) VALUES (?, ?, ?);
+
+selectAll:
+SELECT * FROM member ORDER BY key;
+
+deleteAll:
+DELETE FROM member;
