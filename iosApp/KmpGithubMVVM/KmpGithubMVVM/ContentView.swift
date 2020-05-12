@@ -11,7 +11,7 @@ import shared
 
 struct ContentView: View {
   
-  @ObservedObject var membersViewModel = MembersViewModel(repository: MembersRepository(api: GithubApi()))
+  @ObservedObject var membersViewModel = MembersViewModel(repository: MembersRepository())
   
   var body: some View {
       NavigationView {

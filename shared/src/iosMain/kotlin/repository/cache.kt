@@ -1,9 +1,9 @@
-package com.jshvarts.kmp.shared.model
+package com.jshvarts.kmp.shared.repository
 
 import com.jshvarts.kmp.db.KmpGithubDatabase
 import com.squareup.sqldelight.drivers.native.NativeSqliteDriver
 
-actual fun createDb(): KmpGithubDatabase {
+internal actual fun cache(): KmpGithubDatabase {
   val driver = NativeSqliteDriver(KmpGithubDatabase.Schema, "members.db")
   return KmpGithubDatabase(driver)
 }

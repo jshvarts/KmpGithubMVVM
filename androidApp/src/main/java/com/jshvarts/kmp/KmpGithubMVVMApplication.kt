@@ -2,15 +2,14 @@ package com.jshvarts.kmp
 
 import android.app.Application
 import com.jshvarts.kmp.shared.BuildConfig
-import com.jshvarts.kmp.shared.api.GithubApi
-import com.jshvarts.kmp.shared.model.MembersRepository
-import com.jshvarts.kmp.shared.model.appContext
+import com.jshvarts.kmp.shared.repository.MembersRepository
+import com.jshvarts.kmp.shared.repository.appContext
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import timber.log.Timber
 
 class KmpGithubMVVMApplication : Application() {
-  val membersRepository: MembersRepository by lazy {
-    MembersRepository(GithubApi())
-  }
+  @ExperimentalCoroutinesApi
+  val membersRepository by lazy { MembersRepository() }
 
   override fun onCreate() {
     super.onCreate()
