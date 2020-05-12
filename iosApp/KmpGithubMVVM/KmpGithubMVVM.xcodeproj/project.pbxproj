@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18520C3BA67B9BBB9B385CDC /* Pods_KmpGithubMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A6BD2E8ECC2C879304AF05 /* Pods_KmpGithubMVVM.framework */; };
 		1ABEBF2024689B0000FA58A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEBF1F24689B0000FA58A2 /* AppDelegate.swift */; };
 		1ABEBF2224689B0000FA58A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEBF2124689B0000FA58A2 /* SceneDelegate.swift */; };
 		1ABEBF2424689B0000FA58A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEBF2324689B0000FA58A2 /* ContentView.swift */; };
@@ -14,10 +15,10 @@
 		1ABEBF2924689B0200FA58A2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ABEBF2824689B0200FA58A2 /* Preview Assets.xcassets */; };
 		1ABEBF2C24689B0200FA58A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ABEBF2A24689B0200FA58A2 /* LaunchScreen.storyboard */; };
 		1ABEBF3424689B2100FA58A2 /* MembersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEBF3324689B2100FA58A2 /* MembersViewModel.swift */; };
-		BEAD0E7E59F033C52664C980 /* libPods-KmpGithubMVVM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5203757BFCDB9BA21E86F9 /* libPods-KmpGithubMVVM.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11A6BD2E8ECC2C879304AF05 /* Pods_KmpGithubMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KmpGithubMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ABEBF1C24689B0000FA58A2 /* KmpGithubMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KmpGithubMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ABEBF1F24689B0000FA58A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1ABEBF2124689B0000FA58A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,7 +30,6 @@
 		1ABEBF3324689B2100FA58A2 /* MembersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersViewModel.swift; sourceTree = "<group>"; };
 		B43E6836610DD1CF8AB1671C /* Pods-KmpGithubMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KmpGithubMVVM.release.xcconfig"; path = "Target Support Files/Pods-KmpGithubMVVM/Pods-KmpGithubMVVM.release.xcconfig"; sourceTree = "<group>"; };
 		BFC2F5C0E2E10EB2F5E7DBC7 /* Pods-KmpGithubMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KmpGithubMVVM.debug.xcconfig"; path = "Target Support Files/Pods-KmpGithubMVVM/Pods-KmpGithubMVVM.debug.xcconfig"; sourceTree = "<group>"; };
-		CA5203757BFCDB9BA21E86F9 /* libPods-KmpGithubMVVM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KmpGithubMVVM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEAD0E7E59F033C52664C980 /* libPods-KmpGithubMVVM.a in Frameworks */,
+				18520C3BA67B9BBB9B385CDC /* Pods_KmpGithubMVVM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +97,7 @@
 		F4E2C16DAA396813DB0D36E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CA5203757BFCDB9BA21E86F9 /* libPods-KmpGithubMVVM.a */,
+				11A6BD2E8ECC2C879304AF05 /* Pods_KmpGithubMVVM.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -119,8 +119,6 @@
 			dependencies = (
 			);
 			name = KmpGithubMVVM;
-			packageProductDependencies = (
-			);
 			productName = KmpGithubMVVM;
 			productReference = 1ABEBF1C24689B0000FA58A2 /* KmpGithubMVVM.app */;
 			productType = "com.apple.product-type.application";
@@ -149,8 +147,6 @@
 				Base,
 			);
 			mainGroup = 1ABEBF1324689B0000FA58A2;
-			packageReferences = (
-			);
 			productRefGroup = 1ABEBF1D24689B0000FA58A2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
