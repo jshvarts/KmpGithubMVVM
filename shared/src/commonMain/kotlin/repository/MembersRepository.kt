@@ -6,7 +6,6 @@ import com.jshvarts.kmp.shared.api.DataLoadException
 import com.jshvarts.kmp.shared.api.GithubApi
 import com.jshvarts.kmp.shared.applicationDispatcher
 import com.jshvarts.kmp.shared.model.Member
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -17,7 +16,6 @@ import kotlinx.coroutines.launch
 
 internal expect fun cache(): KmpGithubDatabase
 
-@ExperimentalCoroutinesApi
 class MembersRepository(
   private val api: GithubApi,
   private val cache: KmpGithubDatabase,

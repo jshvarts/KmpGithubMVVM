@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jshvarts.kmp.shared.model.Member
 import com.jshvarts.kmp.shared.repository.MembersRepository
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
@@ -30,7 +29,6 @@ class MembersViewModel(
     loadMembers()
   }
 
-  @ExperimentalCoroutinesApi
   fun loadMembers(force: Boolean = false) {
 
     viewModelScope.launch {

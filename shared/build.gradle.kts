@@ -42,6 +42,12 @@ kotlin {
   }
 
   sourceSets {
+    all {
+      languageSettings.apply {
+        useExperimentalAnnotation("kotlinx.coroutines.ExperimentalCoroutinesApi")
+      }
+    }
+
     val commonMain by getting {
       dependencies {
         implementation(kotlin("stdlib-common"))
@@ -50,7 +56,7 @@ kotlin {
         implementation(Ktor.Json.common)
         implementation(Ktor.Logging.common)
         implementation(Ktor.Serialization.common)
-        implementation(SqlDelight.common)
+        implementation(SqlDelight.runtime)
       }
     }
 
