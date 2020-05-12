@@ -80,7 +80,7 @@ object Serialization {
 }
 
 object SqlDelight {
-  const val common = "com.squareup.sqldelight:runtime:${Versions.sqldelight}"
+  const val runtime = "com.squareup.sqldelight:runtime:${Versions.sqldelight}"
   const val android = "com.squareup.sqldelight:android-driver:${Versions.sqldelight}"
   const val native = "com.squareup.sqldelight:native-driver:${Versions.sqldelight}"
 }

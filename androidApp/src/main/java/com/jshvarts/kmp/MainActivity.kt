@@ -11,21 +11,17 @@ import com.jshvarts.kmp.shared.api.DataLoadException
 import com.jshvarts.kmp.shared.createPlatformMessage
 import com.jshvarts.kmp.shared.model.Member
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class MainActivity : AppCompatActivity() {
 
-  @ExperimentalCoroutinesApi
   private val repository by lazy {
     (application as KmpGithubMVVMApplication).membersRepository
   }
 
-  @ExperimentalCoroutinesApi
   private val viewModel by lazy { MembersViewModel(repository) }
 
   private lateinit var adapter: MemberAdapter
 
-  @ExperimentalCoroutinesApi
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(layout.activity_main)
