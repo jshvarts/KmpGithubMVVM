@@ -7,7 +7,7 @@ import platform.darwin.dispatch_get_main_queue
 import platform.darwin.dispatch_queue_t
 import kotlin.coroutines.CoroutineContext
 
-internal actual val ApplicationDispatcher: CoroutineContext = NsQueueDispatcher(
+internal actual val applicationDispatcher: CoroutineContext = NsQueueDispatcher(
   dispatch_get_main_queue()
 )
 

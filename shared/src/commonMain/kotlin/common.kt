@@ -8,4 +8,4 @@ fun createPlatformMessage(): String {
   return "Kotlin rocks on ${platformName()}"
 }
 
-internal expect val ApplicationDispatcher: CoroutineContext
+internal expect val applicationDispatcher: CoroutineContext

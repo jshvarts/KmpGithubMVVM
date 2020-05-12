@@ -1,9 +1,11 @@
-package com.jshvarts.kmp.shared.model
+package com.jshvarts.kmp.shared.repository
 
 import com.jshvarts.kmp.db.KmpGithubDatabase
-import com.jshvarts.kmp.shared.ApplicationDispatcher
+import com.jshvarts.kmp.db.KmpGithubQueries
 import com.jshvarts.kmp.shared.api.DataLoadException
 import com.jshvarts.kmp.shared.api.GithubApi
+import com.jshvarts.kmp.shared.applicationDispatcher
+import com.jshvarts.kmp.shared.model.Member
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
@@ -13,12 +15,15 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
-expect fun createDb(): KmpGithubDatabase
+internal expect fun cache(): KmpGithubDatabase
 
 @ExperimentalCoroutinesApi
-class MembersRepository(private val api: GithubApi) {
-  private val membersLocalDb = createDb()
-  private val membersLocalDbQueries = membersLocalDb.kmpGithubQueries
+class MembersRepository(
+  private val api: GithubApi,
+  private val cache: KmpGithubDatabase,
+  private val queries: KmpGithubQueries = cache.kmpGithubQueries
+) {
+  constructor() : this(api = GithubApi(), cache = cache())
 
   /**
    * If [force] is set to true, attempt to load data from remote api.
@@ -32,10 +37,10 @@ class MembersRepository(private val api: GithubApi) {
   }
 
   /**
-   * To be used by iOS
+   * Used by iOS
    */
   fun fetchMembers(success: (List<Member>) -> Unit) {
-    GlobalScope.launch(ApplicationDispatcher) {
+    GlobalScope.launch(applicationDispatcher) {
       fetchMembersAsFlow(force = true)
           .collect {
             success(it)
@@ -44,9 +49,9 @@ class MembersRepository(private val api: GithubApi) {
   }
 
   private fun cacheMembers(members: List<Member>) {
-    membersLocalDbQueries.deleteAll()
+    queries.deleteAll()
     members.forEach { member ->
-      membersLocalDbQueries.insertItem(
+      queries.insertItem(
           member.id,
           member.login,
           member.avatarUrl
@@ -63,18 +68,18 @@ class MembersRepository(private val api: GithubApi) {
       emit(api.getMembers())
     }
         .catch { error(DataLoadException()) }
-        .flowOn(ApplicationDispatcher)
+        .flowOn(applicationDispatcher)
   }
 
   private fun getMembersFromCache(): Flow<List<Member>> {
     println("Getting members from cache")
 
-    fun loadMembers() = membersLocalDbQueries.selectAll()
+    fun loadMembers() = queries.selectAll()
         .executeAsList()
         .map { Member(id = it.id, login = it.login, avatarUrl = it.avatarUrl) }
 
     return flow { emit(loadMembers()) }
         .catch { error(DataLoadException()) }
-        .flowOn(ApplicationDispatcher)
+        .flowOn(applicationDispatcher)
   }
 }
