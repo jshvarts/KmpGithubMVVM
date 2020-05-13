@@ -1,77 +1,22 @@
 package com.jshvarts.kmp.shared
 
-import kotlinx.coroutines.CancellableContinuation
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Delay
-import kotlinx.coroutines.DisposableHandle
 import kotlinx.coroutines.Runnable
-import platform.darwin.DISPATCH_TIME_NOW
-import platform.darwin.NSEC_PER_MSEC
-import platform.darwin.dispatch_after
 import platform.darwin.dispatch_async
 import platform.darwin.dispatch_get_main_queue
 import platform.darwin.dispatch_queue_t
-import platform.darwin.dispatch_time
 import kotlin.coroutines.CoroutineContext
 
-internal class UIDispatcher : CoroutineDispatcher(), Delay {
-  private val mQueue = dispatch_get_main_queue()
+internal actual val applicationDispatcher: CoroutineContext = NsQueueDispatcher(
+  dispatch_get_main_queue()
+)
 
+internal class NsQueueDispatcher(
+  private val dispatchQueue: dispatch_queue_t
+) : CoroutineDispatcher() {
   override fun dispatch(context: CoroutineContext, block: Runnable) {
-    dispatch_async(mQueue) {
+    dispatch_async(dispatchQueue) {
       block.run()
-    }
-  }
-
-  override fun scheduleResumeAfterDelay(
-      timeMillis: Long,
-      continuation: CancellableContinuation<Unit>
-  ) {
-    dispatch_after(
-        `when` = dispatch_time(
-            DISPATCH_TIME_NOW,
-            timeMillis * NSEC_PER_MSEC.toLong()
-        ),
-        queue = mQueue
-    ) {
-      val result = continuation.tryResume(Unit)
-      if (result != null) {
-        continuation.completeResume(result)
-      }
-    }
-  }
-
-  override fun invokeOnTimeout(timeMillis: Long, block: Runnable): DisposableHandle {
-    var disposed = false
-    dispatch_after(
-        `when` = dispatch_time(
-            DISPATCH_TIME_NOW,
-            timeMillis * NSEC_PER_MSEC.toLong()
-        ),
-        queue = mQueue
-    ) {
-      if (disposed) return@dispatch_after
-
-      block.run()
-    }
-    return object : DisposableHandle {
-      override fun dispose() {
-        disposed = true
-      }
     }
   }
 }
-//
-//internal actual val applicationDispatcher: CoroutineContext = NsQueueDispatcher(
-//  dispatch_get_main_queue()
-//)
-//
-//internal class NsQueueDispatcher(
-//  private val dispatchQueue: dispatch_queue_t
-//) : CoroutineDispatcher() {
-//  override fun dispatch(context: CoroutineContext, block: Runnable) {
-//    dispatch_async(dispatchQueue) {
-//      block.run()
-//    }
-//  }
-//}
