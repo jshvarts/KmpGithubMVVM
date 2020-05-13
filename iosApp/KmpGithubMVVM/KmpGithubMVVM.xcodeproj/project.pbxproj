@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18520C3BA67B9BBB9B385CDC /* Pods_KmpGithubMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A6BD2E8ECC2C879304AF05 /* Pods_KmpGithubMVVM.framework */; };
+		1A3606EA246B6D8D0008BB33 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3606E9246B6D8D0008BB33 /* ImageLoader.swift */; };
 		1ABEBF2024689B0000FA58A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEBF1F24689B0000FA58A2 /* AppDelegate.swift */; };
 		1ABEBF2224689B0000FA58A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEBF2124689B0000FA58A2 /* SceneDelegate.swift */; };
 		1ABEBF2424689B0000FA58A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEBF2324689B0000FA58A2 /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		11A6BD2E8ECC2C879304AF05 /* Pods_KmpGithubMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KmpGithubMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A3606E9246B6D8D0008BB33 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		1ABEBF1C24689B0000FA58A2 /* KmpGithubMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KmpGithubMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ABEBF1F24689B0000FA58A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1ABEBF2124689B0000FA58A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				1ABEBF2D24689B0200FA58A2 /* Info.plist */,
 				1ABEBF2724689B0200FA58A2 /* Preview Content */,
 				1ABEBF3324689B2100FA58A2 /* MembersViewModel.swift */,
+				1A3606E9246B6D8D0008BB33 /* ImageLoader.swift */,
 			);
 			path = KmpGithubMVVM;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			files = (
 				1ABEBF3424689B2100FA58A2 /* MembersViewModel.swift in Sources */,
 				1ABEBF2024689B0000FA58A2 /* AppDelegate.swift in Sources */,
+				1A3606EA246B6D8D0008BB33 /* ImageLoader.swift in Sources */,
 				1ABEBF2224689B0000FA58A2 /* SceneDelegate.swift in Sources */,
 				1ABEBF2424689B0000FA58A2 /* ContentView.swift in Sources */,
 			);
