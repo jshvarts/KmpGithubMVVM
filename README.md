@@ -9,4 +9,4 @@
 
 Android            |  iOS
 :-------------------------:|:-------------------------:
-![android screenshot](docs/android.png?raw=true) | ![ios screenshot](docs/ios.png)
+![android](docs/android.png?raw=true) | ![ios](docs/ios.png)
