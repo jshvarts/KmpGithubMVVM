@@ -30,10 +30,32 @@ struct ContentView: View {
 }
 
 struct MemberView : View {
-  var member: Member
+  @ObservedObject var loader: ImageLoader
+  private let member: Member
+
+  init(member: Member) {
+    self.member = member
+    loader = ImageLoader(url: member.avatarUrl)
+  }
   
   var body: some View {
+    HStack {
+      Image(uiImage: uiImageOrPlaceholder(uiImage: loader.image))
+        .resizable()
+        .frame(width: 100.0, height: 100.0)
+        .scaledToFit()
       Text(member.login).font(.headline)
+    }
+    .onAppear(perform: loader.load )
+    .onDisappear(perform: loader.cancel )
+  }
+  
+  private func uiImageOrPlaceholder(uiImage: UIImage?) -> UIImage {
+    if let uiImage = uiImage {
+        return uiImage
+    } else {
+        return UIImage(named: "avatar-placeholder")!
+    }
   }
 }
 

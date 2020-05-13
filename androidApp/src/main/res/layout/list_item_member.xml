@@ -8,9 +8,9 @@
   <ImageView
     android:id="@+id/memberAvatar"
     android:layout_width="@dimen/list_item_height"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="0dp"
-    android:layout_marginTop="0dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="@dimen/padding_standard"
+    android:layout_marginTop="@dimen/padding_standard"
     android:contentDescription="@string/member_avatar"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
