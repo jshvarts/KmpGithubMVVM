@@ -1,6 +1,6 @@
 # Kotlin Multiplatform Sample
 
-![Android CI](https://github.com/jshvarts/KmpGithubMVVM/workflows/Android%20CI/badge.svg)
+![Android CI](https://github.com/jshvarts/KmpGithubMVVM/workflows/CI/badge.svg)
 
 * Implements Android and iOS targets
 * Uses MVVM Design pattern (Lifecycle Arch component and LiveData on Android, SwiftUI and Combine on iOS)
