@@ -11,16 +11,20 @@ import shared
 
 class MembersViewModel: ObservableObject {
   @Published var members = [Member]()
-
+  @Published var isError = false
+  
   private let repository: MembersRepository
   
   init(repository: MembersRepository) {
-      self.repository = repository
+    self.repository = repository
   }
   
   func fetch() {
-    repository.fetchMembers(success: { [weak self] data in
+    repository.fetchMembers(onSuccess: { [weak self] data in
       self?.members = data
-    })
+      }, onError: { [weak self] throwable in
+        self?.isError = true
+      }
+    )
   }
 }
