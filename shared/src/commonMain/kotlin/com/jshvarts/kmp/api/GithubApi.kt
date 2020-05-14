@@ -1,6 +1,6 @@
-package com.jshvarts.kmp.shared.api
+package com.jshvarts.kmp.api
 
-import com.jshvarts.kmp.shared.model.Member
+import com.jshvarts.kmp.model.Member
 import io.ktor.client.HttpClient
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer

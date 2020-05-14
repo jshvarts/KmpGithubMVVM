@@ -1,11 +1,11 @@
-package com.jshvarts.kmp
+package com.jshvarts.kmp.android
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jshvarts.kmp.shared.model.Member
-import com.jshvarts.kmp.shared.repository.MembersRepository
+import com.jshvarts.kmp.model.Member
+import com.jshvarts.kmp.repository.MembersRepository
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion

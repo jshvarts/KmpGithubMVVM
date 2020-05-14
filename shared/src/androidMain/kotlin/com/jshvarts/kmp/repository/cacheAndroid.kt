@@ -1,4 +1,4 @@
-package com.jshvarts.kmp.shared.repository
+package com.jshvarts.kmp.repository
 
 import android.content.Context
 import com.jshvarts.kmp.db.KmpGithubDatabase

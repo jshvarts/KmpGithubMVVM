@@ -1,9 +1,8 @@
-package com.jshvarts.kmp
+package com.jshvarts.kmp.android
 
 import android.app.Application
-import com.jshvarts.kmp.shared.BuildConfig
-import com.jshvarts.kmp.shared.repository.MembersRepository
-import com.jshvarts.kmp.shared.repository.appContext
+import com.jshvarts.kmp.repository.MembersRepository
+import com.jshvarts.kmp.repository.appContext
 import timber.log.Timber
 
 class KmpGithubMVVMApplication : Application() {
