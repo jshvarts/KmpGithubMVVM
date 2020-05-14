@@ -1,3 +1,3 @@
-package com.jshvarts.kmp.shared.api
+package com.jshvarts.kmp.api
 
 class DataLoadException : Throwable()

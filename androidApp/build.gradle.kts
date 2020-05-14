@@ -8,7 +8,7 @@ android {
   compileSdkVersion(Versions.compileSdk)
 
   defaultConfig {
-    applicationId = "com.jshvarts.kmp"
+    applicationId = "com.jshvarts.kmp.android"
     minSdkVersion(Versions.minSdk)
     targetSdkVersion(Versions.targetSdk)
     versionCode = 1

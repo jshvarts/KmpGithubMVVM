@@ -1,4 +1,4 @@
-package com.jshvarts.kmp.shared.model
+package com.jshvarts.kmp.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -1,10 +1,10 @@
-package com.jshvarts.kmp
+package com.jshvarts.kmp.android
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.jshvarts.kmp.shared.model.Member
+import com.jshvarts.kmp.model.Member
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item_member.view.memberAvatar
 import kotlinx.android.synthetic.main.list_item_member.view.memberLogin

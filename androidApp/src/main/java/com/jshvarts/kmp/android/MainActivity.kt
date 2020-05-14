@@ -1,15 +1,15 @@
-package com.jshvarts.kmp
+package com.jshvarts.kmp.android
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jshvarts.kmp.R.layout
-import com.jshvarts.kmp.R.string
-import com.jshvarts.kmp.shared.api.DataLoadException
-import com.jshvarts.kmp.shared.createPlatformMessage
-import com.jshvarts.kmp.shared.model.Member
+import com.jshvarts.kmp.android.R.layout
+import com.jshvarts.kmp.android.R.string
+import com.jshvarts.kmp.api.DataLoadException
+import com.jshvarts.kmp.createPlatformMessage
+import com.jshvarts.kmp.model.Member
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

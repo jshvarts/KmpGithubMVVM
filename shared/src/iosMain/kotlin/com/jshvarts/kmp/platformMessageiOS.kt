@@ -1,4 +1,4 @@
-package com.jshvarts.kmp.shared
+package com.jshvarts.kmp
 
 import platform.UIKit.UIDevice
 

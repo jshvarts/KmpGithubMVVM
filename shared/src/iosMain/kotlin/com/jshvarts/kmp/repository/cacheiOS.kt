@@ -1,4 +1,4 @@
-package com.jshvarts.kmp.shared.repository
+package com.jshvarts.kmp.repository
 
 import com.jshvarts.kmp.db.KmpGithubDatabase
 import com.squareup.sqldelight.drivers.native.NativeSqliteDriver

@@ -1,11 +1,11 @@
-package com.jshvarts.kmp.shared.repository
+package com.jshvarts.kmp.repository
 
+import com.jshvarts.kmp.applicationDispatcher
+import com.jshvarts.kmp.api.DataLoadException
 import com.jshvarts.kmp.db.KmpGithubDatabase
 import com.jshvarts.kmp.db.KmpGithubQueries
-import com.jshvarts.kmp.shared.api.DataLoadException
-import com.jshvarts.kmp.shared.api.GithubApi
-import com.jshvarts.kmp.shared.applicationDispatcher
-import com.jshvarts.kmp.shared.model.Member
+import com.jshvarts.kmp.api.GithubApi
+import com.jshvarts.kmp.model.Member
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -34,16 +34,13 @@ class MembersRepository(
     return if (force) getMembersFromRemote() else getMembersFromCache()
   }
 
-  /**
-   * Used by iOS
-   */
   fun fetchMembers(
     onSuccess: (List<Member>) -> Unit,
     onError: (Throwable) -> Unit
   ) {
     GlobalScope.launch(applicationDispatcher) {
       fetchMembersAsFlow(force = true)
-          .catch { onError(it) }
+          .catch { onError(DataLoadException()) }
           .collect { onSuccess(it) }
     }
   }

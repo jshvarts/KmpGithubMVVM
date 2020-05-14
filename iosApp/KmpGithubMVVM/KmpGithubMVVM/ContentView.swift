@@ -19,7 +19,7 @@ struct ContentView: View {
         List(membersViewModel.members, id: \.id) { member in
           MemberView(member: member)
         }
-        Text(CommonKt.createPlatformMessage())
+        Text(PlatformMessageKt.createPlatformMessage())
       }
       .navigationBarTitle(Text("Github Members"), displayMode: .large)
       .onAppear(perform: {
