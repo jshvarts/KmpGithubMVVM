@@ -37,12 +37,14 @@ class MembersRepository(
   /**
    * Used by iOS
    */
-  fun fetchMembers(success: (List<Member>) -> Unit) {
+  fun fetchMembers(
+    onSuccess: (List<Member>) -> Unit,
+    onError: (Throwable) -> Unit
+  ) {
     GlobalScope.launch(applicationDispatcher) {
       fetchMembersAsFlow(force = true)
-          .collect {
-            success(it)
-          }
+          .catch { onError(it) }
+          .collect { onSuccess(it) }
     }
   }
 
