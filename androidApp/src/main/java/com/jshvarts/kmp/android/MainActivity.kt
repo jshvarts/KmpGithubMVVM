@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jshvarts.kmp.android.R.layout
 import com.jshvarts.kmp.android.R.string
-import com.jshvarts.kmp.api.DataLoadException
+import com.jshvarts.kmp.api.RefreshDataException
 import com.jshvarts.kmp.createPlatformMessage
 import com.jshvarts.kmp.model.Member
 import kotlinx.android.synthetic.main.activity_main.*
@@ -53,20 +53,15 @@ class MainActivity : AppCompatActivity() {
 
   private fun showData(members: List<Member>) {
     adapter.members = members
-
-    runOnUiThread {
-      adapter.notifyDataSetChanged()
-    }
+    adapter.notifyDataSetChanged()
   }
 
   private fun showError(error: Throwable) {
     val errorMessage = when (error) {
-      is DataLoadException -> getString(string.update_problem_message)
+      is RefreshDataException -> getString(string.refresh_data_error)
       else -> getString(string.unknown_error)
     }
-    runOnUiThread {
-      Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
-    }
+    Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
   }
 
   private fun setupRecyclerView() {
