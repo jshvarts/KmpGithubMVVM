@@ -17,10 +17,10 @@ Android                    |  iOS
 
 ## Installation
 
-Execute `gradlew build` from the root of the project.
+Run `gradlew build` from the root of the project. After a successful build, you should be able to install the app on both Android and iOS.
 
-You should now be able to install the app on Android device and emulator and on iOS device and simulator.
+> If you are unable to run the project in Xcode, you may need to add `-lsqlite3` to `Other Linker Flags` as mentioned [here](https://github.com/cashapp/sqldelight/issues/1442#issuecomment-523435492)
 
-Note: if you are unable to run the project in Xcode, you may need to add `-lsqlite3` to `Other Linker Flags` as mentioned in [this comment](https://github.com/cashapp/sqldelight/issues/1442#issuecomment-523435492)
+## Next Steps
 
-Check out [KaMPKit](https://github.com/touchlab/KaMPKit) for more examples as well as unit tests
+Check out [KaMPKit](https://github.com/touchlab/KaMPKit) for more examples as well as unit tests.

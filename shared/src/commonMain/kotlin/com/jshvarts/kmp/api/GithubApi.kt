@@ -17,7 +17,7 @@ class GithubApi {
   private val memberUrl = "https://api.github.com/orgs/jetbrains/members"
 
   private val client by lazy {
-    HttpClient() {
+    HttpClient {
       install(JsonFeature) {
         serializer = KotlinxSerializer(
           Json(
