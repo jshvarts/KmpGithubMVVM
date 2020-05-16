@@ -5,6 +5,8 @@ import com.jshvarts.kmp.runTest
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
+import io.ktor.client.engine.mock.respondError
+import io.ktor.client.features.ClientRequestException
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
@@ -18,7 +20,7 @@ class GithubApiTest {
   @Test
   fun `when client throws error, throws exception`() = runTest {
     // GIVEN
-    val mockEngine = MockEngine { _ -> error("request failed") }
+    val mockEngine = MockEngine { respondError(HttpStatusCode.NotFound) }
 
     val httpClient = HttpClient(mockEngine) {
       install(JsonFeature) {
@@ -29,9 +31,7 @@ class GithubApiTest {
     val githubApi = GithubApi(httpClient)
 
     // WHEN/THEN
-    assertFailsWith<IllegalStateException>("request failed") {
-      githubApi.getMembers()
-    }
+    assertFailsWith<ClientRequestException> { githubApi.getMembers() }
   }
 
   @Test
@@ -45,7 +45,7 @@ class GithubApiTest {
     }]     
     """.trimIndent()
 
-    val mockEngine = MockEngine { _ ->
+    val mockEngine = MockEngine {
       respond(testResponseString,
           HttpStatusCode.OK,
           headersOf("Content-Type", ContentType.Application.Json.toString()))
@@ -86,7 +86,7 @@ class GithubApiTest {
     }]     
     """.trimIndent()
 
-    val mockEngine = MockEngine { _ ->
+    val mockEngine = MockEngine {
       respond(testResponseString,
           HttpStatusCode.OK,
           headersOf("Content-Type", ContentType.Application.Json.toString()))
