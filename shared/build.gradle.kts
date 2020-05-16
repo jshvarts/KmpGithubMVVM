@@ -60,6 +60,15 @@ kotlin {
       }
     }
 
+    val commonTest by getting {
+      dependencies {
+        implementation(kotlin("test-annotations-common"))
+        implementation(kotlin("test-common"))
+        implementation(kotlin("test-junit"))
+        implementation(Ktor.Mock.common)
+      }
+    }
+
     val androidMain by getting {
       dependencies {
         implementation(kotlin("stdlib"))
@@ -69,6 +78,7 @@ kotlin {
         implementation(Ktor.Json.jvm)
         implementation(Ktor.Logging.jvm)
         implementation(Ktor.Logging.slf4j)
+        implementation(Ktor.Mock.jvm)
         implementation(Ktor.Serialization.jvm)
         implementation(Serialization.runtime)
         implementation(SqlDelight.android)
@@ -85,6 +95,7 @@ kotlin {
         implementation(Ktor.Serialization.native)
         implementation(Serialization.runtimeNative)
         implementation(SqlDelight.native)
+        implementation(Ktor.Mock.native)
       }
     }
   }

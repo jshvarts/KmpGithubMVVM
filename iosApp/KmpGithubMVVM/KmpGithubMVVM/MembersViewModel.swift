@@ -22,7 +22,7 @@ class MembersViewModel: ObservableObject {
   func fetch() {
     repository.fetchMembers(onSuccess: { [weak self] data in
       self?.members = data
-      }, onError: { [weak self] throwable in
+      }, onFailure: { [weak self] throwable in
         self?.isError = true
       }
     )

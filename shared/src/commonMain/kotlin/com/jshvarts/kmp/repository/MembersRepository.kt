@@ -1,7 +1,7 @@
 package com.jshvarts.kmp.repository
 
 import com.jshvarts.kmp.applicationDispatcher
-import com.jshvarts.kmp.api.DataLoadException
+import com.jshvarts.kmp.api.RefreshDataException
 import com.jshvarts.kmp.db.KmpGithubDatabase
 import com.jshvarts.kmp.db.KmpGithubQueries
 import com.jshvarts.kmp.api.GithubApi
@@ -25,10 +25,10 @@ class MembersRepository(
 
   /**
    * If [force] is set to true, attempt to load data from remote api.
-   * If remote api is not available. throw [DataLoadException]
+   * If remote api is not available. throw [RefreshDataException]
    *
    * If [force] is set to false, attempt to load data from local cache.
-   * If local cache is not available, throw [DataLoadException]
+   * If local cache is not available, propagate the exception encountered
    */
   fun fetchMembersAsFlow(force: Boolean): Flow<List<Member>> {
     return if (force) getMembersFromRemote() else getMembersFromCache()
@@ -36,11 +36,11 @@ class MembersRepository(
 
   fun fetchMembers(
     onSuccess: (List<Member>) -> Unit,
-    onError: (Throwable) -> Unit
+    onFailure: (Throwable) -> Unit
   ) {
     GlobalScope.launch(applicationDispatcher) {
       fetchMembersAsFlow(force = true)
-          .catch { onError(DataLoadException()) }
+          .catch { onFailure(it) }
           .collect { onSuccess(it) }
     }
   }
@@ -64,7 +64,7 @@ class MembersRepository(
       cacheMembers(members)
       emit(api.getMembers())
     }
-        .catch { error(DataLoadException()) }
+        .catch { error(RefreshDataException()) }
         .flowOn(applicationDispatcher)
   }
 
@@ -76,7 +76,7 @@ class MembersRepository(
         .map { Member(id = it.id, login = it.login, avatarUrl = it.avatarUrl) }
 
     return flow { emit(loadMembers()) }
-        .catch { error(DataLoadException()) }
+        .catch { error(RefreshDataException()) }
         .flowOn(applicationDispatcher)
   }
 }
