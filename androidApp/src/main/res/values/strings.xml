@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Github Members</string>
-    <string name="update_problem_message">Failed to get data from server. Check connection</string>
+    <string name="refresh_data_error">Failed to get data from server. Check your connection</string>
     <string name="unknown_error">Unknown error</string>
     <string name="empty_cache">Empty cache. Try pull to refresh</string>
     <string name="member_avatar">Member avatar</string>
