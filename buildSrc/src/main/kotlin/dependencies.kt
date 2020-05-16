@@ -19,9 +19,9 @@ object Versions {
   const val timber = "4.7.1"
 }
 
-const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
-const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
 const val material = "com.google.android.material:material:${Versions.material}"
+const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
 object AndroidX {
   const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
@@ -63,6 +63,12 @@ object Ktor {
     const val jvm = "io.ktor:ktor-client-logging-jvm:${Versions.ktor}"
     const val slf4j = "org.slf4j:slf4j-simple:${Versions.slf4j}"
     const val native = "io.ktor:ktor-client-logging-native:${Versions.ktor}"
+  }
+
+  object Mock {
+    const val common = "io.ktor:ktor-client-mock:${Versions.ktor}"
+    const val jvm = "io.ktor:ktor-client-mock-jvm:${Versions.ktor}"
+    const val native = "io.ktor:ktor-client-mock-native:${Versions.ktor}"
   }
 
   object Serialization {

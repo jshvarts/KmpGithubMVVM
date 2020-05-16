@@ -12,25 +12,24 @@ import io.ktor.client.request.get
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 
-class GithubApi {
+internal val kotlinxSerializer = KotlinxSerializer(
+    Json(
+        JsonConfiguration(isLenient = true, ignoreUnknownKeys = true)
+    )
+)
 
-  private val memberUrl = "https://api.github.com/orgs/jetbrains/members"
-
-  private val client by lazy {
-    HttpClient {
-      install(JsonFeature) {
-        serializer = KotlinxSerializer(
-          Json(
-            JsonConfiguration(isLenient = true, ignoreUnknownKeys = true)
-          )
-        )
-      }
-      install(Logging) {
-        logger = Logger.DEFAULT
-        level = LogLevel.ALL
-      }
-    }
+internal val ktorClient = HttpClient {
+  install(JsonFeature) {
+    serializer = kotlinxSerializer
   }
+  install(Logging) {
+    logger = Logger.DEFAULT
+    level = LogLevel.ALL
+  }
+}
 
-  suspend fun getMembers(): List<Member> = client.get(memberUrl)
+internal const val MEMBERS_URL = "https://api.github.com/orgs/jetbrains/members"
+
+class GithubApi(private val client: HttpClient = ktorClient) {
+  suspend fun getMembers(): List<Member> = client.get(MEMBERS_URL)
 }
