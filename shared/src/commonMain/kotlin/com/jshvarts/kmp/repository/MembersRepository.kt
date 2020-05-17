@@ -18,10 +18,9 @@ internal expect fun cache(): KmpGithubDatabase
 
 class MembersRepository(
   private val api: GithubApi,
-  private val cache: KmpGithubDatabase,
-  private val queries: KmpGithubQueries = cache.kmpGithubQueries
+  private val queries: KmpGithubQueries = cache().kmpGithubQueries
 ) {
-  constructor() : this(api = GithubApi(), cache = cache())
+  constructor() : this(api = GithubApi())
 
   /**
    * If [force] is set to true, attempt to load data from remote api.
