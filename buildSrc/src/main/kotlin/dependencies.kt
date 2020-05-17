@@ -1,5 +1,7 @@
 object Versions {
   const val androidBuildTools = "29.0.2"
+  const val androidXTest = "1.2.0"
+  const val androidXTestJUnit = "1.1.2-alpha02"
   const val appCompat = "1.0.2"
   const val compileSdk = 29
   const val constraintLayout = "1.1.3"
@@ -11,6 +13,7 @@ object Versions {
   const val minSdk = 23
   const val picasso = "2.71828"
   const val recyclerView = "1.1.0"
+  const val robolectric = "4.3.1"
   const val serialization = "0.20.0"
   const val slf4j = "1.7.30"
   const val sqldelight = "1.3.0"
@@ -21,6 +24,7 @@ object Versions {
 
 const val material = "com.google.android.material:material:${Versions.material}"
 const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
 const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
 object AndroidX {
@@ -30,6 +34,13 @@ object AndroidX {
   const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
   const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
   const val swipeToRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeToRefreshLayout}"
+
+  object Test {
+    const val core = "androidx.test:core:${Versions.androidXTest}"
+    const val runner = "androidx.test:runner:${Versions.androidXTest}"
+    const val jUnit = "androidx.test.ext:junit:${Versions.androidXTestJUnit}"
+    const val jUnitKtx = "androidx.test.ext:junit-ktx:${Versions.androidXTestJUnit}"
+  }
 }
 
 object Coroutines {
