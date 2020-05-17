@@ -43,5 +43,12 @@ dependencies {
   implementation(timber)
   implementation(picasso)
 
+  testImplementation(junit)
+
+  androidTestImplementation(AndroidX.Test.core)
+  androidTestImplementation(AndroidX.Test.runner)
+  androidTestImplementation(AndroidX.Test.jUnit)
+  androidTestImplementation(AndroidX.Test.jUnitKtx)
+
   implementation(project(":shared"))
 }

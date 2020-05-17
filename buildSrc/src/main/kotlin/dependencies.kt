@@ -6,6 +6,7 @@ object Versions {
   const val compileSdk = 29
   const val constraintLayout = "1.1.3"
   const val coroutines = "1.3.5"
+  const val junit = "4.12"
   const val kotlin = "1.3.72"
   const val ktor = "1.3.2"
   const val lifecycle = "2.2.0"
@@ -26,6 +27,7 @@ const val material = "com.google.android.material:material:${Versions.material}"
 const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
 const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
 const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+const val junit = "junit:junit:${Versions.junit}"
 
 object AndroidX {
   const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
