@@ -62,9 +62,6 @@ kotlin {
 
     val commonTest by getting {
       dependencies {
-        implementation(kotlin("test-annotations-common"))
-        implementation(kotlin("test-common"))
-        implementation(kotlin("test-junit"))
         implementation(Ktor.Mock.common)
       }
     }
@@ -85,6 +82,13 @@ kotlin {
       }
     }
 
+    val androidTest by getting {
+      dependencies {
+        implementation(kotlin("test-junit"))
+        implementation(Ktor.Mock.jvm)
+      }
+    }
+
     val iOSMain by getting {
       dependencies {
         implementation(Coroutines.Core.native)
@@ -95,6 +99,12 @@ kotlin {
         implementation(Ktor.Serialization.native)
         implementation(Serialization.runtimeNative)
         implementation(SqlDelight.native)
+        implementation(Ktor.Mock.native)
+      }
+    }
+
+    val iOSTest by getting {
+      dependencies {
         implementation(Ktor.Mock.native)
       }
     }
