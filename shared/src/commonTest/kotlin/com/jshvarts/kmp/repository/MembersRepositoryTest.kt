@@ -6,10 +6,9 @@ import com.jshvarts.kmp.RunWith
 import com.jshvarts.kmp.api.GithubApi
 import kotlin.test.Test
 
-@RunWith(AndroidJUnit4::class)
 class MembersRepositoryTest : BaseDatabaseTest() {
   private val queries
-    get() = database().kmpGithubQueries
+    get() = database.kmpGithubQueries
 
   @Test
   fun `fetch members success`() {
