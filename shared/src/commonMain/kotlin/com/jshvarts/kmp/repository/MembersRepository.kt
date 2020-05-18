@@ -5,6 +5,7 @@ import com.jshvarts.kmp.api.RefreshDataException
 import com.jshvarts.kmp.db.KmpGithubDatabase
 import com.jshvarts.kmp.db.KmpGithubQueries
 import com.jshvarts.kmp.api.GithubApi
+import com.jshvarts.kmp.api.GithubApiImpl
 import com.jshvarts.kmp.model.Member
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
@@ -20,7 +21,7 @@ class MembersRepository(
   private val api: GithubApi,
   private val queries: KmpGithubQueries = cache().kmpGithubQueries
 ) {
-  constructor() : this(api = GithubApi())
+  constructor() : this(api = GithubApiImpl())
 
   /**
    * If [force] is set to true, attempt to load data from remote api.

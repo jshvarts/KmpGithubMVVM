@@ -28,7 +28,7 @@ class GithubApiTest {
       }
     }
 
-    val githubApi = GithubApi(httpClient)
+    val githubApi = GithubApiImpl(httpClient)
 
     // WHEN/THEN
     assertFailsWith<ClientRequestException> { githubApi.getMembers() }
@@ -57,7 +57,7 @@ class GithubApiTest {
       }
     }
 
-    val githubApi = GithubApi(httpClient)
+    val githubApi = GithubApiImpl(httpClient)
 
     val expectedMembers = listOf(
         Member(
@@ -98,7 +98,7 @@ class GithubApiTest {
       }
     }
 
-    val githubApi = GithubApi(httpClient)
+    val githubApi = GithubApiImpl(httpClient)
 
     val expectedMembers = listOf(
         Member(

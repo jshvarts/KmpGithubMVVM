@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
   id("com.android.application")
   kotlin("android")
@@ -30,6 +32,8 @@ android {
 }
 
 dependencies {
+  implementation(project(":shared"))
+
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   implementation(kotlin("stdlib-jdk7", Versions.kotlin))
   implementation(Coroutines.android)
@@ -43,5 +47,9 @@ dependencies {
   implementation(timber)
   implementation(picasso)
 
-  implementation(project(":shared"))
+  testImplementation("junit:junit:4.13")
+}
+
+tasks.withType<KotlinCompile>().all {
+  kotlinOptions.freeCompilerArgs += "-Xuse-experimental=kotlin.Experimental"
 }

@@ -15,6 +15,7 @@ android {
     targetSdkVersion(Versions.targetSdk)
     versionCode = 1
     versionName = "1.0"
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
 }
 
@@ -45,6 +46,7 @@ kotlin {
     all {
       languageSettings.apply {
         useExperimentalAnnotation("kotlinx.coroutines.ExperimentalCoroutinesApi")
+        useExperimentalAnnotation("kotlinx.serialization.UnstableDefault")
       }
     }
 
@@ -62,6 +64,9 @@ kotlin {
 
     val commonTest by getting {
       dependencies {
+        implementation(kotlin("test-annotations-common"))
+        implementation(kotlin("test-common"))
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.6")
         implementation(Ktor.Mock.common)
       }
     }
@@ -84,7 +89,15 @@ kotlin {
 
     val androidTest by getting {
       dependencies {
+        implementation(kotlin("test"))
         implementation(kotlin("test-junit"))
+        implementation("junit:junit:4.13")
+        implementation("androidx.test:core:1.2.0")
+        implementation("androidx.test.ext:junit:1.1.1")
+        implementation("androidx.test:runner:1.2.0")
+        implementation("androidx.test:rules:1.2.0")
+        implementation("org.robolectric:robolectric:4.3.1")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.6")
         implementation(Ktor.Mock.jvm)
       }
     }
