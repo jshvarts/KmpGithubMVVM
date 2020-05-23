@@ -21,7 +21,7 @@
     android:id="@+id/memberLogin"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:textSize="18dp"
+    android:textSize="18sp"
     android:layout_margin="@dimen/padding_standard"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
